@@ -32,5 +32,7 @@ int main()
               << "div(f1, f2) = ";
     std::cout << f6;
 
+    std::cout << static_cast<float>(f1);
+
     return 0;
 }
