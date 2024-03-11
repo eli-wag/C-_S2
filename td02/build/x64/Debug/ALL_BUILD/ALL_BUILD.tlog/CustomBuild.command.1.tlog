@@ -1,0 +1,10 @@
+^C:\USERS\CHRISTEL\DESKTOP\TD\C++\S2\C-_S2\TD02\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Christel/Desktop/TD/C++/S2/C-_S2/td02 -BC:/Users/Christel/Desktop/TD/C++/S2/C-_S2/td02/build --check-stamp-file C:/Users/Christel/Desktop/TD/C++/S2/C-_S2/td02/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

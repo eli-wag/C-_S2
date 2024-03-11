@@ -1,0 +1,10 @@
+^C:\USERS\CHRISTEL\DESKTOP\TD\C++\S2\C-_S2\TD01\BUILD\CMAKEFILES\DC229B8E9DE783E8E1F646B1D624579C\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Christel/Desktop/TD/C++/S2/C-_S2/td01 -BC:/Users/Christel/Desktop/TD/C++/S2/C-_S2/td01/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Christel/Desktop/TD/C++/S2/C-_S2/td01/build/td01_Project.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

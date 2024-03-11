@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 struct Fraction
 {
@@ -14,8 +15,8 @@ struct Fraction
     operator float() const;
 };
 
-Fraction operator*(Fraction const &f1, Fraction const &f2);
-Fraction operator/(Fraction const &f1, Fraction const &f2);
+Fraction operator*(Fraction f1, Fraction const &f2);
+Fraction operator/(Fraction f1, Fraction const &f2);
 Fraction operator+(Fraction a, Fraction const &b);
 Fraction operator-(Fraction a, Fraction const &b);
 bool operator==(Fraction const &f1, Fraction const &f2);
