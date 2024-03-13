@@ -2,47 +2,30 @@
 #include <vector>
 #include <algorithm>
 #include "ScopedTimer.hpp"
+#include "sort.hpp"
 
-bool is_sorted(std::vector<float> const &vec)
+bool is_sorted(std::vector<int> const &vec)
 {
     return std::is_sorted(vec.begin(), vec.end());
 }
 
+// TRI A BULLES
+void bubble_sort(std::vector<int> &vec)
+{
+    while (!is_sorted(vec))
+    {
+        for (int i{0}; i <= vec.size() - 2; i += 1)
+        {
+            if (vec[i] > vec[i + 1])
+            {
+                std::swap(vec[i], vec[i + 1]);
+            }
+        }
+    }
+}
+
 // TRI FUSION
-// std::vector<float> division(std::vector<float> &vec, size_t const left, size_t const middle, size_t const right)
-// {
-//     std::vector<float> vec1;
-//     std::vector<float> vec2;
-
-//     for (size_t i{0}; i < middle; i++)
-//     {
-//         vec1.push_back(vec[i]);
-//         division(vec1, 0, right - left + 1, vec1.size() - 1);
-//     }
-//     for (size_t j{middle}; j <= vec.size(); j++)
-//     {
-//         vec2.push_back(vec[j]);
-//         division(vec2, 0, right - left + 1, vec2.size() - 1);
-//     }
-// }
-
-// void tri(std::vector<float> &vec, size_t const left, size_t const right)
-// {
-//     while (vec.size() != 2)
-//     {
-//         division(vec, 0, right - left + 1, vec.size() - 1);
-//     }
-//     if (vec[left] > vec[vec.size()])
-//     {
-//         std::swap(vec[left], vec[vec.size()]);
-//     }
-// }
-// void merge_sort(std::vector<float> &vec)
-// {
-//     tri(vec, 0, vec.size() - 1);
-// }
-
-void merge_sort_merge(std::vector<float> &vec, size_t const left, size_t const middle, size_t const right)
+void merge_sort_merge(std::vector<int> &vec, size_t const left, size_t const middle, size_t const right)
 {
     // On crée deux vecteurs temporaires pour stocker les copies des deux sous-parties à fusionner
     size_t const left_size{middle - left + 1};
@@ -90,7 +73,7 @@ void merge_sort_merge(std::vector<float> &vec, size_t const left, size_t const m
     }
 }
 
-void merge_sort(std::vector<float> &vec, size_t const left, size_t const right)
+void merge_sort(std::vector<int> &vec, size_t const left, size_t const right)
 {
     if (left < right)
     {
@@ -100,31 +83,44 @@ void merge_sort(std::vector<float> &vec, size_t const left, size_t const right)
         merge_sort_merge(vec, left, middle, right);
     }
 }
-void merge_sort(std::vector<float> &vec)
+void merge_sort(std::vector<int> &vec)
 {
     merge_sort(vec, 0, vec.size() - 1);
 }
 
-int main()
+// COMPARAISON DES ALGOS
+std::vector<int> generate_random_vector(size_t const size, int const max)
 {
-    // std::vector<int> array{1, 2, 3, 4, 5, 6, 7, 8, 9};
-    // if (is_sorted(array))
-    // {
-    //     std::cout << "Le tableau est trié" << std::endl;
-    // }
-    // else
-    // {
-    //     std::cout << "Le tableau n'est pas trié" << std::endl;
-    // }
+    std::vector<int> vec(size);
+    std::generate(vec.begin(), vec.end(), [&max]()
+                  { return std::rand() % max; });
+    return vec;
+}
 
-    std::vector<float> tab{6, 2, 8, 1, 5, 3, 9};
-    merge_sort(tab);
-    if (is_sorted(tab))
+// DICHOTOMIE
+
+int search(std::vector<int> &vec, int const val, int left, int right)
+{
+    if (left > right)
+        return -1;
+
+    int middle = (left + right) / 2;
+
+    if (vec[middle] == val)
     {
-        std::cout << "Le tableau est trié" << std::endl;
+        return middle;
     }
-    else
+    if (vec[middle] < val)
     {
-        std::cout << "Le tableau n'est pas trié" << std::endl;
+        return search(vec, val, middle + 1, right);
     }
+    else if (vec[middle] > val)
+    {
+        return search(vec, val, left, middle);
+    }
+}
+
+int search(std::vector<int> &vec, int const val)
+{
+    return search(vec, val, 0, vec.size() - 1);
 }
