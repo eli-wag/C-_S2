@@ -3,42 +3,7 @@
 #include <algorithm>
 #include <numeric>
 #include <iterator>
-
-std::vector<int> generate_random_vector(size_t const size, int const max)
-{
-    std::vector<int> vec(size);
-    std::generate(vec.begin(), vec.end(), [&max]()
-                  { return std::rand() % max; });
-    return vec;
-}
-
-auto const is_space = [](char letter)
-{
-    return letter == ' ';
-};
-
-int count(std::string const string)
-{
-    std::string::const_iterator iterator = std::find_if(string.begin(), string.end(), is_space);
-    auto n = std::distance(string.begin(), iterator);
-    return n;
-}
-
-std::vector<std::string> split_string(std::string const &str)
-{
-    std::string::const_iterator iterator{};
-    while (iterator != str.end())
-    {
-        iterator = std::find_if(str.begin(), str.end(), is_space);
-        auto n = std::distance(str.begin(), iterator);
-
-        std::vector<std::string> mots{};
-        for (int i{0}; i <= n; i++)
-        {
-            mots.push_back();
-        }
-    }
-};
+#include "utils.hpp"
 
 int main()
 {
@@ -84,8 +49,24 @@ int main()
 
     // EXERCICE 2
 
-    std::string s{"Moi c'est Mike"};
-    std::cout << "Longueur du premier mot : " << count(s);
+    std::string s{"le mot de la fin nif al ed tom el"};
+    std::cout << "Longueur du premier mot : " << count(s) << std::endl;
+
+    std::vector<std::string> vec{split_string(s)};
+
+    for (int i{0}; i < vec.size(); i++)
+    {
+        std::cout << vec[i] << std::endl;
+    }
+
+    if (palindrome(s))
+    {
+        std::cout << "c'est un palindrome" << std::endl;
+    }
+    else
+    {
+        std::cout << "ce n'est pas un palindrome" << std::endl;
+    }
 
     return 0;
 }
