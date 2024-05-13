@@ -76,7 +76,7 @@ Fraction Fraction::operator+=(Fraction const &a)
 Fraction operator+(Fraction a, Fraction const &b)
 {
     a += b;
-    return a;
+    return simplify(a);
 };
 
 Fraction Fraction::operator-=(Fraction const &a)
@@ -89,7 +89,7 @@ Fraction Fraction::operator-=(Fraction const &a)
 Fraction operator-(Fraction a, Fraction const &b)
 {
     a -= b;
-    return a;
+    return simplify(a);
 };
 
 Fraction Fraction::operator*=(Fraction const &f1)
@@ -102,7 +102,7 @@ Fraction Fraction::operator*=(Fraction const &f1)
 Fraction operator*(Fraction f1, Fraction const &f2)
 {
     f1 *= f2;
-    return f1;
+    return simplify(f1);
 };
 
 Fraction Fraction::operator/=(Fraction const &f1)
@@ -115,7 +115,7 @@ Fraction Fraction::operator/=(Fraction const &f1)
 Fraction operator/(Fraction f1, Fraction const &f2)
 {
     f1 /= f2;
-    return f1;
+    return simplify(f1);
 };
 
 std::ostream &operator<<(std::ostream &os, Fraction const &f)
@@ -131,4 +131,40 @@ float Fraction::to_float() const
 Fraction::operator float() const
 {
     return to_float();
+}
+
+// Pour aller plus loin
+Fraction operator+(Fraction &f, int const i)
+{
+    f.numerator += i * f.denominator;
+    return simplify(f);
+}
+
+Fraction operator+(int const i, Fraction &f)
+{
+    return simplify(f + i);
+}
+
+Fraction operator-(Fraction &f, int const i)
+{
+    f.numerator -= i * f.denominator;
+    return simplify(f);
+}
+
+Fraction operator*(Fraction &f, int const i)
+{
+    f.numerator *= i;
+    return simplify(f);
+}
+
+Fraction operator*(int const i, Fraction &f)
+{
+    return simplify(f * i);
+}
+
+Fraction operator/(Fraction &f, int const i)
+{
+    f.numerator /= i;
+    f.denominator *= i;
+    return simplify(f);
 }

@@ -1,8 +1,10 @@
 #include "utils.hpp"
 
-unsigned int gcd(unsigned int a, unsigned int b) {
-    while (b != 0) {
-        unsigned int modulo {a % b};
+unsigned int gcd(unsigned int a, unsigned int b)
+{
+    while (b != 0)
+    {
+        unsigned int modulo{a % b};
         a = b;
         b = modulo;
     }
@@ -22,12 +24,15 @@ unsigned int gcd(unsigned int a, unsigned int b) {
 //     return b == 0 ? a : gcd(b, a % b);
 // }
 
-
-Fraction simplify(Fraction const& f) {
-    unsigned int divisor { gcd(f.numerator, f.denominator) };
+Fraction simplify(Fraction const &f)
+{
+    unsigned int divisor{gcd(f.numerator, f.denominator)};
 
     return {
         f.numerator / divisor,
-        f.denominator / divisor
-    };
+        f.denominator / divisor};
+}
+
+Fraction abs(Fraction &f)
+{
 }

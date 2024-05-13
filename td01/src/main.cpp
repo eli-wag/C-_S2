@@ -32,7 +32,15 @@ int main()
               << "div(f1, f2) = ";
     std::cout << f6;
 
-    std::cout << static_cast<float>(f1);
+    std::cout << static_cast<float>(f1) << std::endl;
+
+    // Pour aller plus loin
+
+    std::cout << "3/4 + 1 = " << f1 + 1 << std::endl;
+    std::cout << "1 + 3/4 = " << 1 + f1 << std::endl;
+    std::cout << "3/4 - 1 = " << f1 - 1 << std::endl;
+    std::cout << "3/4 * 2 = " << f1 * 2 << std::endl;
+    std::cout << "(3/4) / 4 = " << f1 / 2 << std::endl;
 
     return 0;
 }
