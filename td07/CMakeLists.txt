@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.2)
+# target_compile_features(${TARGET_NAME} PUBLIC cxx_std_20)
 
 cmake_path(GET CMAKE_CURRENT_SOURCE_DIR FILENAME FolderName)   
 string(REPLACE " " "_" FolderName ${FolderName})
