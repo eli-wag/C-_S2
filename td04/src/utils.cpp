@@ -46,28 +46,7 @@ std::vector<std::string> split_string(std::string const &str)
 
 // EXERCICE 3
 
-bool palindrome(std::string &s)
-{
-    std::vector<char> moit1{};
-    std::vector<char> moit2{};
-
-    for (int i{0}; i < s.size() / 2; i++)
-    {
-        moit1.push_back(s[i]);
-    }
-
-    for (size_t j{s.size()}; j >= s.size() / 2; j--)
-    {
-        moit2.push_back(s[j]);
-    }
-
-    for (int x{0}; x < moit1.size(); x++)
-    {
-        if (moit1[x] != moit2[x + 1])
-        {
-            return false;
-        }
-    }
-
-    return true;
-}
+// bool palindrome(const std::string s)
+// {
+//     return std::equal(s.begin(), s.begin() + s.size() / 2, s.rbegin());
+// };

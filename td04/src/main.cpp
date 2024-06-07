@@ -59,14 +59,7 @@ int main()
         std::cout << vec[i] << std::endl;
     }
 
-    if (palindrome(s))
-    {
-        std::cout << "c'est un palindrome" << std::endl;
-    }
-    else
-    {
-        std::cout << "ce n'est pas un palindrome" << std::endl;
-    }
+    // std::cout << (palindrome(s) ? "Yes" : "No") << std::endl;
 
     return 0;
 }
